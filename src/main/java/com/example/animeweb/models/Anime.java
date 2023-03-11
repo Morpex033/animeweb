@@ -1,9 +1,11 @@
 package com.example.animeweb.models;
 
+import com.example.animeweb.repositories.ImageRepository;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -41,6 +43,9 @@ public class Anime {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY,
             mappedBy = "anime")
     private List<Image> imageList = new ArrayList<>();
+    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+    @JoinColumn
+    private User user;
     private LocalDateTime dateOfCreated;
 
     private void init() {
@@ -50,7 +55,6 @@ public class Anime {
     public void addImageToAnime(Image image) {
         image.setAnime(this);
         imageList.add(image);
-
     }
 
     private Long previewImageId;
@@ -92,6 +96,8 @@ public class Anime {
     }
 
     public void setTitle(String title) {
+        title.trim();
+        title.replace(" ", "-");
         this.title = title;
     }
 

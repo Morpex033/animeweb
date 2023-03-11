@@ -8,7 +8,10 @@
     <title>Create</title>
 </head>
 <body>
+<a href="/anime"><input type="submit" value="Home page"></a>
+<hr>
 <form method="post" action="/anime/create" enctype="multipart/form-data">
+    <input type="hidden" name="_csrf" value="${_csrf.token}">
     <label for="title"><b>Enter title: </b></label>
     <input type="text" name="title"/>
     <br><br>
@@ -34,7 +37,7 @@
     <input type="text" name="director"/>
     <br><br>
     <label for="description"><b>Enter description: </b></label>
-    <input type="text" name="description"/>
+    <textarea name="description" style="width: 400px; height: 150px;"></textarea>
     <br><br>
     <label for="file1"><b>Enter first photo: </b></label>
     <input type="file" name="file1"/>

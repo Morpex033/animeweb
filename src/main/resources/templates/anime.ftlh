@@ -8,6 +8,8 @@
     <title>${anime.title}</title>
 </head>
 <body>
+<a href="/anime"><input type="submit" value="Home page"></a>
+<hr>
 <#list images as img>
     <img src="/images/${img.id}" height="60px"/><br><br>
 </#list>
@@ -36,9 +38,15 @@
 <br>
 <br>
 <b>Description: </b>${anime.description}
+<#if user.isAdmin()>
 <hr/>
+<a href="/anime/edit/${anime.title}-${anime.id}"><input type="submit" value="Edit"></a>
+<br>
+<br>
 <form action="/anime/delete/${anime.title}-${id}" method="post">
+    <input type="hidden" name="_csrf" value="${_csrf.token}">
     <input type="submit" value="Delete">
 </form>
+</#if>
 </body>
 </html>
