@@ -48,6 +48,9 @@
     <label for="file3"><b>Enter third photo: </b></label>
     <input type="file" name="file3"/>
     <br><br>
+    <label for="video"><b>Enter trailer url: </b></label>
+    <input type="text" name="video" />
+    <br><br>
     <input type="submit" value="Edit">
 </form>
 </body>
