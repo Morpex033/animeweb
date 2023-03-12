@@ -59,6 +59,13 @@ public class Anime {
 
     private Long previewImageId;
 
+    public String getShortDescription(){
+        if (description.length() >534){
+            return description.substring(0,534) + "...";
+        }
+        return description;
+    }
+
     public String getTitle() {
         return this.title;
     }

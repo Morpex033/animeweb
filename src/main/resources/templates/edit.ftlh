@@ -39,15 +39,6 @@
     <label for=" description"><b>Enter description: </b></label>
     <textarea name="description" style="width: 400px; height: 150px;">${anime.description}</textarea>
     <br><br>
-    <label for=" file1"><b>Enter first photo: </b></label>
-    <input type="file" name="file1"/>
-    <br><br>
-    <label for="file2"><b>Enter second photo: </b></label>
-    <input type="file" name="file2"/>
-    <br><br>
-    <label for="file3"><b>Enter third photo: </b></label>
-    <input type="file" name="file3"/>
-    <br><br>
     <input type="submit" value="Edit">
 </form>
 </body>

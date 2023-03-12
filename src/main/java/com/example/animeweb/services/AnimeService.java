@@ -58,8 +58,7 @@ public class AnimeService {
         animeRepository.deleteById(id);
     }
 
-    public void editAnime(Anime anime, MultipartFile file1, MultipartFile file2, MultipartFile file3) throws IOException {
-        addImageToAnime(anime, file1, file2, file3);
+    public void editAnime(Anime anime) {
         animeRepository.save(anime);
     }
 

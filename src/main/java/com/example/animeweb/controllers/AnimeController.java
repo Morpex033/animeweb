@@ -67,12 +67,8 @@ public class AnimeController {
     }
 
     @PostMapping("/anime/edit/{title}-{id}")
-    public String editAnime(@PathVariable String title, @PathVariable Long id, Anime anime,
-                            @RequestParam("file1") MultipartFile file1,
-                            @RequestParam("file2") MultipartFile file2,
-                            @RequestParam("file3") MultipartFile file3) throws IOException {
-
-        animeService.editAnime(anime, file1, file2, file3);
+    public String editAnime(@PathVariable String title, @PathVariable Long id, Anime anime){
+        animeService.editAnime(anime);
         return "redirect:/anime";
     }
 }
