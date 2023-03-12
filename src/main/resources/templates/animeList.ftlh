@@ -12,7 +12,7 @@
             margin: unset;
         }
 
-        .anime-block{
+        .anime-block {
             display: inline-flex;
             padding: 5px;
         }
@@ -23,7 +23,7 @@
             height: 150px;
         }
 
-        .info-block{
+        .info-block {
             display: table;
             padding: 5px;
             width: 750px;
@@ -67,7 +67,8 @@
 </form>
 <#list anime as anime>
     <div class="anime-block">
-        <div class="anime-img"><a href="/images/${anime.getPreviewImageId()}"><img src="/images/${anime.getPreviewImageId()}" height="150px"/></a></div>
+        <div class="anime-img"><a href="/images/${anime.getPreviewImageId()}"><img
+                        src="/images/${anime.getPreviewImageId()}" height="150px"/></a></div>
         <div class="info-block">
             <div class="title"><a href="/anime/${anime.title}-${anime.id}">${anime.title}</a></div>
             <div class="genre">${anime.genre}</div>
