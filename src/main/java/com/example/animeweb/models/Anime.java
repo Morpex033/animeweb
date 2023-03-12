@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.net.URL;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +40,8 @@ public class Anime {
     private String director;
     @Column(name = "description", columnDefinition = "text")
     private String description;
+    @Column(name = "url")
+    private String url;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY,
             mappedBy = "anime")
@@ -59,9 +62,9 @@ public class Anime {
 
     private Long previewImageId;
 
-    public String getShortDescription(){
-        if (description.length() >534){
-            return description.substring(0,534) + "...";
+    public String getShortDescription() {
+        if (description.length() > 534) {
+            return description.substring(0, 534) + "...";
         }
         return description;
     }
@@ -103,8 +106,6 @@ public class Anime {
     }
 
     public void setTitle(String title) {
-        title.trim();
-        title.replace(" ", "-");
         this.title = title;
     }
 

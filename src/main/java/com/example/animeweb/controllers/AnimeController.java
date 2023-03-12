@@ -2,9 +2,7 @@ package com.example.animeweb.controllers;
 
 import com.example.animeweb.models.Anime;
 import com.example.animeweb.services.AnimeService;
-import com.example.animeweb.services.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -36,6 +34,7 @@ public class AnimeController {
         Anime anime = animeService.getAnimeById(id);
         model.addAttribute("anime", anime);
         model.addAttribute("images", anime.getImageList());
+        model.addAttribute("video", anime.getUrl());
         model.addAttribute("user", animeService.getUserByPrincipal(principal));
         return "anime";
     }
@@ -56,6 +55,7 @@ public class AnimeController {
                          @RequestParam("file1") MultipartFile file1,
                          @RequestParam("file2") MultipartFile file2,
                          @RequestParam("file3") MultipartFile file3, Principal principal) throws IOException {
+
         animeService.saveAnime(principal, anime, file1, file2, file3);
         return "redirect:/anime";
     }
