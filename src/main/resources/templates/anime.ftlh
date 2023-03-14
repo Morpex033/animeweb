@@ -6,37 +6,11 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>${anime.title}</title>
-    <link rel="stylesheet" type="text/css">
-    <style>
-        .body {
-            display: inline-block;
-        }
-
-        .img-and-info {
-            display: table;
-            padding: 10px;
-        }
-
-        .img-preview {
-            display: inline-block;
-            padding: 5px;
-        }
-
-        .info-block {
-            display: inline-block;
-            padding: 15px;
-            vertical-align: 35px;
-        }
-
-        .info-row {
-            display: table-row;
-        }
-
-        .img-video-line {
-            display: inline-block;
-            padding: 10px;
-        }
-    </style>
+    <#import "scripts/scripts.ftlh" as script>
+    <#import "scripts/playerjs.ftlh" as playerjs>
+    <#import "styles/css.ftlh" as style>
+    <@style.anime></@style.anime>
+    <@playerjs.player>  </@playerjs.player>
 </head>
 <body>
 <div class="body">
@@ -78,9 +52,22 @@
                     <img src="/images/${img.id}" height="200px"/>
                 </#if>
             </#list>
-            <iframe width="355" height="200" src="${video}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <iframe width="355" height="200" src="${video}" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
         </div>
     </div>
+
+    <div id="player"></div>
+
+    <script>
+        var player = new Playerjs({
+            id: "player", file: [
+                {title: "Series 1", file: "https://www.youtube.com/watch?v=PTqWyKYUCIU"},
+                {title: "Series 2", file: "https://www.youtube.com/watch?v=dNS61T4MmlM&list=PL0lO_mIqDDFX1c0JHogP5YuZdOVawoepS"}]
+        });
+    </script>
+
     <#if user.isAdmin()>
         <hr/>
         <a href="/anime/edit/${anime.title}-${anime.id}"><input type="submit" value="Edit"></a>

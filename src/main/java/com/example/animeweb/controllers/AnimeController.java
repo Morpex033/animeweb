@@ -7,12 +7,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import java.io.IOException;
 import java.security.Principal;
 
 @Controller
 @RequiredArgsConstructor
+@EnableWebMvc
 public class AnimeController {
     private final AnimeService animeService;
 
@@ -26,7 +28,7 @@ public class AnimeController {
                             Principal principal) {
         model.addAttribute("anime", animeService.animeList(title));
         model.addAttribute("user", animeService.getUserByPrincipal(principal));
-        return "animeList";
+        return "index";
     }
 
     @GetMapping("/anime/{title}-{id}")
@@ -55,7 +57,6 @@ public class AnimeController {
                          @RequestParam("file1") MultipartFile file1,
                          @RequestParam("file2") MultipartFile file2,
                          @RequestParam("file3") MultipartFile file3, Principal principal) throws IOException {
-
         animeService.saveAnime(principal, anime, file1, file2, file3);
         return "redirect:/anime";
     }

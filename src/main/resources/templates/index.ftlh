@@ -2,48 +2,9 @@
 <html>
 <head>
     <title>Anime</title>
-    <link rel="stylesheet" type="text/css">
-    <style>
-        a {
-            text-decoration: none;
-        }
-
-        p {
-            margin: unset;
-        }
-
-        .anime-block {
-            display: inline-flex;
-            padding: 5px;
-        }
-
-        .anime-img {
-            display: inline-block;
-            padding: 5px;
-            height: 150px;
-        }
-
-        .info-block {
-            display: table;
-            padding: 5px;
-            width: 750px;
-            height: 50px;
-        }
-
-        .title {
-            display: table-row;
-            font-size: x-large;
-        }
-
-        .genre {
-            display: table-row;
-            font-size: large;
-        }
-
-        .description {
-            display: table-row;
-        }
-    </style>
+    <#import "scripts/scripts.ftlh" as script>
+    <#import "styles/css.ftlh" as style>
+    <@style.index></@style.index>
 </head>
 <body>
 <h1>Anime </h1>
