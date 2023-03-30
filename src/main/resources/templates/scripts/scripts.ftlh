@@ -1,3 +1,2 @@
-<#macro search animeList>
-
+<#macro player>
 </#macro>

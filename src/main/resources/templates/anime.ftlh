@@ -7,10 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>${anime.title}</title>
     <#import "scripts/scripts.ftlh" as script>
-    <#import "scripts/playerjs.ftlh" as playerjs>
     <#import "styles/css.ftlh" as style>
     <@style.anime></@style.anime>
-    <@playerjs.player>  </@playerjs.player>
 </head>
 <body>
 <div class="body">
@@ -57,17 +55,6 @@
                     allowfullscreen></iframe>
         </div>
     </div>
-
-    <div id="player"></div>
-
-    <script>
-        var a = 1;
-        var player = new Playerjs({
-            id: "player", file: [
-                {title: "Series " + a, file: "file:///E:/Anime/${anime.title}/Series " + a++ + "/output.m3u8"}
-            ]
-        });
-    </script>
 
     <#if user.isAdmin()>
         <hr/>
