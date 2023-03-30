@@ -23,12 +23,14 @@
 </#if>
 <hr/>
 <form action="/anime" method="get">
-    Search by title: <input type="text" name="title"><br>
-    <input type="submit" value="Search">
+    <div class="search-block">
+        <input class="search" id="search-input" type="text" name="title" placeholder="Search by title" onkeyup="searchAnime()">
+        <input class="submit" type="submit" value="Search">
+    </div>
 </form>
 <#list anime as anime>
     <div class="anime-block">
-        <div class="anime-img"><a href="/images/${anime.getPreviewImageId()}"><img
+        <div class="anime-img"><a href="/anime/${anime.title}-${anime.id}"><img
                         src="/images/${anime.getPreviewImageId()}" height="150px"/></a></div>
         <div class="info-block">
             <div class="title"><a href="/anime/${anime.title}-${anime.id}">${anime.title}</a></div>

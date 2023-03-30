@@ -84,5 +84,4 @@ public class AnimeService {
             anime.addImageToAnime(image3);
         }
     }
-
 }

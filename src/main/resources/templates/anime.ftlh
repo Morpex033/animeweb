@@ -61,10 +61,11 @@
     <div id="player"></div>
 
     <script>
+        var a = 1;
         var player = new Playerjs({
             id: "player", file: [
-                {title: "Series 1", file: "https://www.youtube.com/watch?v=PTqWyKYUCIU"},
-                {title: "Series 2", file: "https://www.youtube.com/watch?v=dNS61T4MmlM&list=PL0lO_mIqDDFX1c0JHogP5YuZdOVawoepS"}]
+                {title: "Series " + a, file: "file:///E:/Anime/${anime.title}/Series " + a++ + "/output.m3u8"}
+            ]
         });
     </script>
 
