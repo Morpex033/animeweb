@@ -6,6 +6,8 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Create</title>
+    <#import "styles/css.ftlh" as style>
+    <@style.index></@style.index>
 </head>
 <body>
 <a href="/anime"><input type="submit" value="Home page"></a>
@@ -40,18 +42,18 @@
     <textarea name="description" style="width: 400px; height: 150px;">${anime.description}</textarea>
     <br><br>
     <label for=" file1"><b>Enter first photo: </b></label>
-    <input type="file" name="file1"/>
+    <input type="file" name="file1" value="${file1}"/>
     <br><br>
     <label for="file2"><b>Enter second photo: </b></label>
-    <input type="file" name="file2"/>
+    <input type="file" name="file2" value="${file2}"/>
     <br><br>
     <label for="file3"><b>Enter third photo: </b></label>
-    <input type="file" name="file3"/>
+    <input type="file" name="file3" value="${file3}"/>
     <br><br>
     <label for="video"><b>Enter trailer url: </b></label>
-    <input type="text" name="video" />
+    <input type="text" name="video" value="${url}"/>
     <br><br>
-    <input type="submit" value="Edit">
+    <input class="submit" type="submit" value="Edit">
 </form>
 </body>
 </html>

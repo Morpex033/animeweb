@@ -6,41 +6,13 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>${anime.title}</title>
-    <link rel="stylesheet" type="text/css">
-    <style>
-        .body {
-            display: inline-block;
-        }
-
-        .img-and-info {
-            display: table;
-            padding: 10px;
-        }
-
-        .img-preview {
-            display: inline-block;
-            padding: 5px;
-        }
-
-        .info-block {
-            display: inline-block;
-            padding: 15px;
-            vertical-align: 35px;
-        }
-
-        .info-row {
-            display: table-row;
-        }
-
-        .img-video-line {
-            display: inline-block;
-            padding: 10px;
-        }
-    </style>
+    <#import "scripts/scripts.ftlh" as script>
+    <#import "styles/css.ftlh" as style>
+    <@style.anime></@style.anime>
 </head>
 <body>
 <div class="body">
-    <a href="/anime"><input type="submit" value="Home page"></a>
+    <a href="/anime"><input class="submit" type="submit" value="Home page"></a>
     <hr>
     <br>
     <div>
@@ -78,17 +50,20 @@
                     <img src="/images/${img.id}" height="200px"/>
                 </#if>
             </#list>
-            <iframe width="355" height="200" src="${video}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <iframe width="355" height="200" src="${video}" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
         </div>
     </div>
+
     <#if user.isAdmin()>
         <hr/>
-        <a href="/anime/edit/${anime.title}-${anime.id}"><input type="submit" value="Edit"></a>
+        <a href="/anime/edit/${anime.title}-${anime.id}"><input class="submit" type="submit" value="Edit"></a>
         <br>
         <br>
         <form action="/anime/delete/${anime.title}-${id}" method="post">
             <input type="hidden" name="_csrf" value="${_csrf.token}">
-            <input type="submit" value="Delete">
+            <input class="submit" type="submit" value="Delete">
         </form>
     </#if>
 </div>
