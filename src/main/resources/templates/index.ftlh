@@ -42,7 +42,7 @@
 <#if user.email??>
     <#if user.isAdmin()>
         <hr/>
-        <a href="/anime/create"><input type="submit" value="Add new anime"></a>
+        <a href="/anime/create"><input class="submit" type="submit" value="Add new anime"></a>
     </#if>
 </#if>
 </body>

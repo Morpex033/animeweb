@@ -6,6 +6,8 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Create</title>
+    <#import "styles/css.ftlh" as style>
+    <@style.index></@style.index>
 </head>
 <body>
 <a href="/anime"><input type="submit" value="Home page"></a>
@@ -51,7 +53,7 @@
     <label for="video"><b>Enter trailer url: </b></label>
     <input type="text" name="video" value="${url}"/>
     <br><br>
-    <input type="submit" value="Edit">
+    <input class="submit" type="submit" value="Edit">
 </form>
 </body>
 </html>

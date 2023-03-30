@@ -12,7 +12,7 @@
 </head>
 <body>
 <div class="body">
-    <a href="/anime"><input type="submit" value="Home page"></a>
+    <a href="/anime"><input class="submit" type="submit" value="Home page"></a>
     <hr>
     <br>
     <div>
@@ -58,12 +58,12 @@
 
     <#if user.isAdmin()>
         <hr/>
-        <a href="/anime/edit/${anime.title}-${anime.id}"><input type="submit" value="Edit"></a>
+        <a href="/anime/edit/${anime.title}-${anime.id}"><input class="submit" type="submit" value="Edit"></a>
         <br>
         <br>
         <form action="/anime/delete/${anime.title}-${id}" method="post">
             <input type="hidden" name="_csrf" value="${_csrf.token}">
-            <input type="submit" value="Delete">
+            <input class="submit" type="submit" value="Delete">
         </form>
     </#if>
 </div>
