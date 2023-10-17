@@ -11,7 +11,6 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import java.io.IOException;
 import java.security.Principal;
-import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -32,8 +31,8 @@ public class AnimeController {
         return "index";
     }
 
-    @GetMapping("/anime/{title}-{id}")
-    public String anime(Model model, @PathVariable("title") String title, @PathVariable Long id, Principal principal) throws IOException {
+    @GetMapping("/anime/{ignoredTitle}-{id}")
+    public String anime(Model model, @PathVariable Long id, Principal principal, @PathVariable String ignoredTitle) {
         Anime anime = animeService.getAnimeById(id);
         model.addAttribute("anime", anime);
         model.addAttribute("images", anime.getImageList());
@@ -42,8 +41,8 @@ public class AnimeController {
         return "anime";
     }
 
-    @PostMapping("/anime/delete/{title}-{id}")
-    public String delete(@PathVariable("title") String title, @PathVariable Long id) {
+    @PostMapping("/anime/delete/{ignoredTitle}-{id}")
+    public String delete(@PathVariable Long id, @PathVariable String ignoredTitle) {
         animeService.deleteAnime(id);
         return "redirect:/anime";
     }
@@ -63,8 +62,8 @@ public class AnimeController {
         return "redirect:/anime";
     }
 
-    @GetMapping("/anime/edit/{title}-{id}")
-    public String edit(@PathVariable String title, @PathVariable Long id, Model model) {
+    @GetMapping("/anime/edit/{ignoredTitle}-{id}")
+    public String edit(@PathVariable String ignoredTitle, @PathVariable Long id, Model model) {
         model.addAttribute("anime", animeService.getAnimeById(id));
         model.addAttribute("file1", animeService.getAnimeById(id).getImageList().get(0));
         model.addAttribute("file2", animeService.getAnimeById(id).getImageList().get(1));

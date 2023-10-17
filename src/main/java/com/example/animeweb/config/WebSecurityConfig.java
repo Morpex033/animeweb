@@ -1,6 +1,7 @@
 package com.example.animeweb.config;
 
 import com.example.animeweb.services.CustomUserDetailsService;
+import jakarta.persistence.PrePersist;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -8,6 +9,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.LogoutConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -30,14 +32,9 @@ public class WebSecurityConfig {
                         .loginPage("/login")
                         .permitAll()
                 )
-                .logout(logout -> logout.permitAll());
+                .logout(LogoutConfigurer::permitAll);
 
         return http.build();
-    }
-
-    public void userDetailsService(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService)
-                .passwordEncoder(passwordEncoder());
     }
 
     @Bean

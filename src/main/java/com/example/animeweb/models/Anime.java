@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "anime")
@@ -48,6 +49,7 @@ public class Anime {
     private User user;
     private LocalDateTime dateOfCreated;
 
+    @PrePersist
     private void init() {
         dateOfCreated = LocalDateTime.now();
     }
@@ -106,70 +108,35 @@ public class Anime {
         this.title = title;
     }
 
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public void setEpisodes(int episodes) {
-        this.episodes = episodes;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public void setGenre(String genre) {
-        this.genre = genre;
-    }
-
-    public void setStudio(String Studio) {
-        this.studio = Studio;
-    }
-
-    public void setAgeLimit(String ageLimit) {
-        this.ageLimit = ageLimit;
-    }
-
-    public void setDirector(String director) {
-        this.director = director;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public boolean equals(final Object o) {
         if (o == this) return true;
-        if (!(o instanceof Anime)) return false;
-        final Anime other = (Anime) o;
-        if (!other.canEqual((Object) this)) return false;
+        if (!(o instanceof final Anime other)) return false;
+        if (!other.canEqual(this)) return false;
         final Object this$title = this.getTitle();
         final Object other$title = other.getTitle();
-        if (this$title == null ? other$title != null : !this$title.equals(other$title)) return false;
+        if (!Objects.equals(this$title, other$title)) return false;
         final Object this$type = this.getType();
         final Object other$type = other.getType();
-        if (this$type == null ? other$type != null : !this$type.equals(other$type)) return false;
+        if (!Objects.equals(this$type, other$type)) return false;
         if (this.getEpisodes() != other.getEpisodes()) return false;
         final Object this$status = this.getStatus();
         final Object other$status = other.getStatus();
-        if (this$status == null ? other$status != null : !this$status.equals(other$status)) return false;
+        if (!Objects.equals(this$status, other$status)) return false;
         final Object this$genre = this.getGenre();
         final Object other$genre = other.getGenre();
-        if (this$genre == null ? other$genre != null : !this$genre.equals(other$genre)) return false;
+        if (!Objects.equals(this$genre, other$genre)) return false;
         final Object this$Studio = this.getStudio();
         final Object other$Studio = other.getStudio();
-        if (this$Studio == null ? other$Studio != null : !this$Studio.equals(other$Studio)) return false;
+        if (!Objects.equals(this$Studio, other$Studio)) return false;
         final Object this$ageLimit = this.getAgeLimit();
         final Object other$ageLimit = other.getAgeLimit();
-        if (this$ageLimit == null ? other$ageLimit != null : !this$ageLimit.equals(other$ageLimit)) return false;
+        if (!Objects.equals(this$ageLimit, other$ageLimit)) return false;
         final Object this$director = this.getDirector();
         final Object other$director = other.getDirector();
-        if (this$director == null ? other$director != null : !this$director.equals(other$director)) return false;
+        if (!Objects.equals(this$director, other$director)) return false;
         final Object this$description = this.getDescription();
         final Object other$description = other.getDescription();
-        if (this$description == null ? other$description != null : !this$description.equals(other$description))
-            return false;
-        return true;
+        return Objects.equals(this$description, other$description);
     }
 
     protected boolean canEqual(final Object other) {

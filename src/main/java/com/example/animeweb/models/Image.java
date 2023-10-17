@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 @Entity
 @Table(name = "images")
 @Data
@@ -28,6 +29,8 @@ public class Image {
     private Boolean isPreviewImage;
     @Lob
     private byte[] bytes;
+    @Column(name = "path")
+    private String path;
 
     @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
     private Anime anime;
